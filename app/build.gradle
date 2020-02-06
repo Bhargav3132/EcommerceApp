@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -23,6 +25,14 @@ android {
     }
 }
 
+ext {
+    retrofitVersion = '2.6.2'
+    lifecycleVersion = '2.2.0-rc01'
+    koinVersion = '2.0.1'
+    sdp = "1.0.6"
+    fragment_version = "1.2.0-rc02"
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -32,4 +42,29 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+
+    implementation 'com.google.android.material:material:1.0.0'
+
+    //Dimen & Font dependency
+    implementation "com.intuit.sdp:sdp-android:$sdp"
+    implementation "com.intuit.ssp:ssp-android:$sdp"
+
+    // Koin dependency
+    implementation "org.koin:koin-androidx-scope:$koinVersion"
+    implementation "org.koin:koin-androidx-viewmodel:$koinVersion"
+    implementation "org.koin:koin-androidx-ext:$koinVersion"
+
+    implementation "androidx.fragment:fragment-ktx:$fragment_version"
+
+    // Retrofit dependency
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.2'
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+
+    //Viewmodel & Livedata dependency
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
 }
