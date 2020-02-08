@@ -1,12 +1,20 @@
 package com.heady.ecommerceapp.model
 
+import androidx.room.Entity
+import androidx.room.Ignore
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+@Entity
 data class RankingsItem(
 
-	@field:SerializedName("ranking")
-	val ranking: String? = null,
+	@PrimaryKey
+	var id : Int? = null,
 
+	@field:SerializedName("ranking")
+	var ranking: String? = null,
+
+	@Ignore
 	@field:SerializedName("products")
-	val products: List<RankingProductItem?>? = null
+	var products: List<RankingProductItem?>? = null
 )

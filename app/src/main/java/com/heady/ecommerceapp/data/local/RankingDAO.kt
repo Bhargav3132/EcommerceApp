@@ -1,18 +1,18 @@
 package com.heady.ecommerceapp.data.local
 
-import com.heady.ecommerceapp.model.CategoriesItem
-import com.heady.ecommerceapp.model.ProductsItem
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import com.heady.ecommerceapp.model.RankingProductItem
 import com.heady.ecommerceapp.model.RankingsItem
 
-interface Database {
+@Dao
+interface RankingDAO {
 
-    suspend fun addCategoryAPI(categories: List<CategoriesItem> )
-
-    suspend fun addProduct(products: List<ProductsItem>)
-
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addRanking(rankings: RankingsItem) : Long
 
+    @Insert
     suspend fun addRankingProduct(rankingProductItem: List<RankingProductItem>)
 
 }

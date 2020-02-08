@@ -1,17 +1,28 @@
 package com.heady.ecommerceapp.model
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+@Entity
 data class RankingProductItem(
 
+    @PrimaryKey
+    var rpId: Int?,
+
+    @ColumnInfo(name = "rankingId")
+    var rankingId: String,
+
+    @ColumnInfo(name = "productId")
     @field:SerializedName("id")
-    val id: Int? = null,
+    var productId: Int? = null,
     @field:SerializedName("view_count")
-    val viewCount: Int? = null,
+    var viewCount: Int? = null,
     @field:SerializedName("order_count")
-    val orderCount: Int? = null,
+    var orderCount: Int? = null,
     @field:SerializedName("shares")
-    val shares: Int? = null
+    var shares: Int? = null
 
 
 )
