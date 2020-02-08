@@ -2,8 +2,8 @@ package com.heady.ecommerceapp.data.remote
 
 import com.heady.ecommerceapp.BuildConfig
 import com.heady.ecommerceapp.model.RootDataModel
-import com.heady.ecommerceapp.data.remote.simaple.ApiResponse
-import com.heady.ecommerceapp.data.remote.simaple.executeApiHelper
+import com.heady.ecommerceapp.data.remote.helper.ApiResponse
+import com.heady.ecommerceapp.data.remote.helper.executeApiHelper
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

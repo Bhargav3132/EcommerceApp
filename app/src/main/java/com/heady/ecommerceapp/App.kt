@@ -1,6 +1,7 @@
 package com.heady.ecommerceapp
 
 import android.app.Application
+import com.facebook.stetho.Stetho
 import com.heady.ecommerceapp.di.appModule
 import com.heady.ecommerceapp.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
@@ -18,6 +19,9 @@ class App : Application() {
             androidContext(this@App)
             modules(listOf(appModule, viewModelModule))
         }
+
+        Stetho.initializeWithDefaults(this)
+
     }
 
 }

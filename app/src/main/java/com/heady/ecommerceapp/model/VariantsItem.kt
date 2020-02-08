@@ -5,14 +5,14 @@ import com.google.gson.annotations.SerializedName
 data class VariantsItem(
 
 	@field:SerializedName("color")
-	val color: String? = null,
+	var color: String? = null,
 
 	@field:SerializedName("size")
-	val size: Any? = null,
+	var size: Int? = null,
 
 	@field:SerializedName("price")
-	val price: Int? = null,
+	var price: Int? = null,
 
 	@field:SerializedName("id")
-	val id: Int? = null
+	var id: Int? = null
 )

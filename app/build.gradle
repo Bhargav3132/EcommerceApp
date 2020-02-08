@@ -31,6 +31,7 @@ ext {
     koinVersion = '2.0.1'
     sdp = "1.0.6"
     fragment_version = "1.2.0-rc02"
+    room_version = "2.2.3"
 }
 
 dependencies {
@@ -67,4 +68,13 @@ dependencies {
     kapt "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
+
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation "androidx.room:room-ktx:$room_version"
+
+    // stetho
+    implementation 'com.facebook.stetho:stetho:1.5.1'
 }

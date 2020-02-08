@@ -1,18 +1,25 @@
 package com.heady.ecommerceapp.model
 
+import androidx.room.*
 import com.google.gson.annotations.SerializedName
+import com.heady.ecommerceapp.data.local.CustomTypeConverters
 
+@Entity
 data class CategoriesItem(
 
     @field:SerializedName("name")
-    val name: String? = null,
+    var name: String? = null,
 
+    @PrimaryKey
     @field:SerializedName("id")
-    val id: Int? = null,
+    var id: Int? = null,
 
+    @TypeConverters(CustomTypeConverters::class)
+    @ColumnInfo(name = "childCategory")
     @field:SerializedName("child_categories")
-    val childCategories: List<Any?>? = null,
+    var childCategories: List<Int?>? = null,
 
+    @Ignore
     @field:SerializedName("products")
-    val products: List<ProductsItem?>? = null
+    var products: List<ProductsItem?>? = null
 )

@@ -1,4 +1,4 @@
-package com.heady.ecommerceapp.data.remote.simaple
+package com.heady.ecommerceapp.data.remote.helper
 
 sealed class ApiResponse<out T> {
 

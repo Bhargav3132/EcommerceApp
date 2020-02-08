@@ -5,8 +5,8 @@ import com.google.gson.annotations.SerializedName
 data class Tax(
 
 	@field:SerializedName("name")
-	val name: String? = null,
+	var name: String? = null,
 
 	@field:SerializedName("value")
-	val value: Double? = null
+	var value: Double? = null
 )

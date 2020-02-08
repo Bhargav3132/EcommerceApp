@@ -1,21 +1,33 @@
 package com.heady.ecommerceapp.model
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
 import com.google.gson.annotations.SerializedName
+import com.heady.ecommerceapp.data.local.CustomTypeConverters
 
+@Entity
 data class ProductsItem(
 
-	@field:SerializedName("date_added")
-	val dateAdded: String? = null,
+    @field:SerializedName("date_added")
+    var dateAdded: String? = null,
 
-	@field:SerializedName("name")
-	val name: String? = null,
+    @field:SerializedName("name")
+    var name: String? = null,
 
-	@field:SerializedName("tax")
-	val tax: Tax? = null,
+    @TypeConverters(CustomTypeConverters::class)
+    @field:SerializedName("tax")
+    var tax: Tax? = null,
 
-	@field:SerializedName("id")
-	val id: Int? = null,
+    @PrimaryKey
+    @field:SerializedName("id")
+    var id: Int? = null,
 
-	@field:SerializedName("variants")
-	val variants: List<VariantsItem?>? = null
+    @ColumnInfo(name = "categoryId")
+    var categoryId: Int? = null,
+
+    @TypeConverters(CustomTypeConverters::class)
+    @field:SerializedName("variants")
+    var variants: List<VariantsItem?>? = null
 )

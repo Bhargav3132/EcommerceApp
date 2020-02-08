@@ -1,10 +1,12 @@
-package com.heady.ecommerceapp
+package com.heady.ecommerceapp.ui
 
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import com.heady.ecommerceapp.data.remote.simaple.ApiResponse
+import com.heady.ecommerceapp.R
+import com.heady.ecommerceapp.data.remote.helper.ApiResponse
+import com.heady.ecommerceapp.model.CategoriesItem
 import com.heady.ecommerceapp.viewmodel.RootDataViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
