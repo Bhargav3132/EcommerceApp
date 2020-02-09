@@ -1,7 +1,10 @@
 package com.heady.ecommerceapp.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class VariantsItem(
 
 	@field:SerializedName("color")
@@ -15,4 +18,4 @@ data class VariantsItem(
 
 	@field:SerializedName("id")
 	var id: Int? = null
-)
+) : Parcelable

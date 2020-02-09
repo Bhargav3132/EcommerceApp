@@ -1,13 +1,16 @@
 package com.heady.ecommerceapp.model
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.google.gson.annotations.SerializedName
 import com.heady.ecommerceapp.data.local.CustomTypeConverters
+import kotlinx.android.parcel.Parcelize
 
 @Entity
+@Parcelize
 data class ProductsItem(
 
     @field:SerializedName("date_added")
@@ -30,4 +33,4 @@ data class ProductsItem(
     @TypeConverters(CustomTypeConverters::class)
     @field:SerializedName("variants")
     var variants: List<VariantsItem?>? = null
-)
+) : Parcelable

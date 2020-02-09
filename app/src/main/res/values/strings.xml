@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">EcommerceApp</string>
+    <string name="alert_message_error">Something went wrong, please try again in a few minutes.</string>
+    <string name="no_data_available">No data available</string>
+    <string name="category">Category</string>
+    <string name="price">Price: %1$s</string>
+    <string name="lbl_price">Price:</string>
+    <string name="variants">Variants</string>
+    <string name="size">Size:</string>
+    <string name="color">Color:</string>
 </resources>

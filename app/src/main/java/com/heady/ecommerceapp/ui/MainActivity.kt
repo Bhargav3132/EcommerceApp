@@ -1,46 +1,20 @@
 package com.heady.ecommerceapp.ui
 
-import android.os.Bundle
-import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import com.heady.ecommerceapp.R
-import com.heady.ecommerceapp.data.remote.helper.ApiResponse
-import com.heady.ecommerceapp.model.CategoriesItem
-import com.heady.ecommerceapp.viewmodel.RootDataViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import com.heady.ecommerceapp.ui.base.BaseActivity
+import com.heady.ecommerceapp.ui.fragment.CategoryFragment
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
-    private val rootDataViewModel: RootDataViewModel by viewModel()
+    override fun defineLayoutResource(): Int {
+        return R.layout.activity_main
+    }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    override fun initializeComponents() {
 
-        initObserver()
-
-        rootDataViewModel.getRootData()
+        replaceFragment(R.id.flContainer, supportFragmentManager, CategoryFragment.getInstance())
 
     }
 
-    private fun initObserver() {
-        rootDataViewModel.apiGetRootData.observe(this, Observer {
-            when(it){
-                is ApiResponse.Loading -> {
-                    Log.e("Data Loading","@@@@@@@@@@@@@@@@@@@@@@")
-                }
-                is ApiResponse.ApiError -> {
-                    Log.e("Data error","<<<<<----->>>>>")
-                }
-                is ApiResponse.ServerError -> {
-                    Log.e("Data server error","<<<<<----->>>>>")
-                }
-                is ApiResponse.Success -> {
-                    Log.e("Data download done","<<<<<----->>>>>")
-                }
-            }
 
-        })
-    }
 }

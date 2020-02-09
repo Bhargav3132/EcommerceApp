@@ -13,6 +13,7 @@ import com.heady.ecommerceapp.data.pref.Preference
 import com.heady.ecommerceapp.data.pref.PreferenceManager
 import com.heady.ecommerceapp.data.remote.Api
 import com.heady.ecommerceapp.data.remote.ApiManager
+import com.heady.ecommerceapp.viewmodel.ProductViewModel
 import com.heady.ecommerceapp.viewmodel.RootDataViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -48,4 +49,5 @@ val appModule = module {
 
 val viewModelModule = module {
     viewModel { RootDataViewModel(get()) }
+    viewModel { ProductViewModel(get()) }
 }

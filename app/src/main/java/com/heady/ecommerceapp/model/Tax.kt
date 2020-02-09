@@ -1,7 +1,10 @@
 package com.heady.ecommerceapp.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Tax(
 
 	@field:SerializedName("name")
@@ -9,4 +12,4 @@ data class Tax(
 
 	@field:SerializedName("value")
 	var value: Double? = null
-)
+) : Parcelable

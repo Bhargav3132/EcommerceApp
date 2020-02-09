@@ -8,18 +8,16 @@ import androidx.lifecycle.viewModelScope
 import com.heady.ecommerceapp.data.DataSource
 import com.heady.ecommerceapp.data.pref.Preference
 import com.heady.ecommerceapp.data.remote.helper.ApiResponse
-import com.heady.ecommerceapp.model.CategoriesItem
-import com.heady.ecommerceapp.model.ProductsItem
-import com.heady.ecommerceapp.model.RankingProductItem
-import com.heady.ecommerceapp.model.RootDataModel
+import com.heady.ecommerceapp.model.*
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
 class RootDataViewModel(private val dataRepository: DataSource) : ViewModel(), ComponentCallbacks {
 
-    val apiGetRootData = MutableLiveData<ApiResponse<RootDataModel>>()
+    val apiGetRootData = MutableLiveData<ApiResponse<List<RankingsItem>>>()
+    val apiGetCategory = MutableLiveData<ApiResponse<List<CategoriesItem>>>()
 
-    val preference: Preference by inject()
+    private val preference: Preference by inject()
 
     fun getRootData() {
         apiGetRootData.value = ApiResponse.Loading()
@@ -36,15 +34,20 @@ class RootDataViewModel(private val dataRepository: DataSource) : ViewModel(), C
 
                         // add ranking and products
                         addRankingAndProduct(result)
+
+                        preference.setDataDownloaded(true)
+
+                        apiGetRootData.value = ApiResponse.Success(dataRepository.getRanking())
+                    }
+                    else -> {
+                        apiGetRootData.value = ApiResponse.NoInternetConnection
                     }
                 }
 
-                preference.setDataDownloaded(true)
 
-                apiGetRootData.value = result
             } else {
                 // loading from db
-                apiGetRootData.value = ApiResponse.Success(null)
+                apiGetRootData.value = ApiResponse.Success(dataRepository.getRanking())
             }
 
         }
@@ -85,6 +88,20 @@ class RootDataViewModel(private val dataRepository: DataSource) : ViewModel(), C
 
             }
 
+        }
+    }
+
+    fun getCategory() {
+        apiGetCategory.value = ApiResponse.Loading()
+        viewModelScope.launch {
+            apiGetCategory.value = ApiResponse.Success(dataRepository.getCategory())
+        }
+    }
+
+    fun getCategoryByChild(categoryId: List<Int>) {
+        apiGetCategory.value = ApiResponse.Loading()
+        viewModelScope.launch {
+            apiGetCategory.value = ApiResponse.Success(dataRepository.getCategoryByChild(categoryId))
         }
     }
 

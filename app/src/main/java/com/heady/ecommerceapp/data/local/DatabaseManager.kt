@@ -11,6 +11,26 @@ class DatabaseManager(roomDatabase: RoomDatabase) : Database {
     private val productDAO = roomDatabase.getProductDAO()
     private val rankingDAO = roomDatabase.getRankingDAO()
 
+    override suspend fun getProductByRanking(rankingId: Int): List<ProductsItem> {
+        return productDAO.getProductByRanking(rankingId)
+    }
+
+    override suspend fun getProductByCategory(categoryId: Int): List<ProductsItem> {
+        return productDAO.getProductByCategory(categoryId)
+    }
+
+    override suspend fun getCategoryByChild(categoryId: List<Int>): List<CategoriesItem> {
+        return categoryDAO.getCategoryByChild(categoryId)
+    }
+
+    override suspend fun getCategory(): List<CategoriesItem> {
+        return categoryDAO.getCategory()
+    }
+
+    override suspend fun getRanking(): List<RankingsItem> {
+        return rankingDAO.getRanking()
+    }
+
     override suspend fun addRankingProduct(rankingProductItem: List<RankingProductItem>) {
         rankingDAO.addRankingProduct(rankingProductItem)
     }

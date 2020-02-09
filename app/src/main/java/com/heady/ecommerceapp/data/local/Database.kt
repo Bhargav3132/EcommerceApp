@@ -15,4 +15,14 @@ interface Database {
 
     suspend fun addRankingProduct(rankingProductItem: List<RankingProductItem>)
 
+    suspend fun getRanking() : List<RankingsItem>
+
+    suspend fun getCategory(): List<CategoriesItem>
+
+    suspend fun getCategoryByChild(categoryId: List<Int>): List<CategoriesItem>
+
+    suspend fun getProductByCategory(categoryId: Int): List<ProductsItem>
+
+    suspend fun getProductByRanking(rankingId: Int): List<ProductsItem>
+
 }
